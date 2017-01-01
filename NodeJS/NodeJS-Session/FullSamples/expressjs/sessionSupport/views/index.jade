@@ -1,0 +1,22 @@
+html
+	head
+		script( type='text/javascript' )
+			alert ( 'test alert' ) ;
+	body
+		h1= title
+		p Welcome to #{title}
+		p test
+		form(action='home', method='post')
+			label Username
+			input(type='text', name='username' )
+			br
+			label password
+			input(type='text', name='password' )
+			input(type='submit', name='home' ) login
+			br
+			- if (users.length)
+				h2 Online Users
+				ul
+				- users.forEach(function(item){
+					li= item
+				- })

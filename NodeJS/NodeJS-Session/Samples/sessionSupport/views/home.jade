@@ -1,0 +1,11 @@
+title Shereef Sakr Page
+h1= title
+p Welcome to #{title}
+	- if (friends.length)
+		h2 Friends
+		ul
+		- friends.forEach(function(item){
+			li= item
+		- })
+	
+

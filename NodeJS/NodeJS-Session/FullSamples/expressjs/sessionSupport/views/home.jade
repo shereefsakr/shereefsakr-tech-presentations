@@ -1,0 +1,10 @@
+html
+	body
+		h1= title
+		p Welcome #{username}
+			- if (users.length)
+				h2 Friends
+				ul
+				- users.forEach(function(item){
+					li= item
+				- })

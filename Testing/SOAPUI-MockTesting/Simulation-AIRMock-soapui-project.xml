@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="a9ef19b9-0e22-4316-a3e0-f1a5c6fa6c27" activeEnvironment="Default" name="Simulation-AIRMock" resourceRoot="" defaultScriptLanguage="Groovy" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:testSuite id="bff62b0f-c416-4315-b43b-b36c7cd78f01" name="AIR-Simulation-Clear"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="f6c52f67-1df6-4362-9827-e7a90105ff14" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Clear Simulator" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="Clear Simulator MSISDN Sequences" id="f53aed12-f073-454c-9841-99e77aa688cc"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="e8eb85fa-17f3-488e-9e5f-7814320c9ede" name="Clear Simulator MSISDN Sequences" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://${#Project#TEST_URL_AIR_SIM_CLEAR}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="dcc8f3ef-b48c-43ad-a4cf-6cb080f2cf99" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="759995a9-56f4-468f-9a5e-062d34af55cf" name="Contains"><con:configuration><token>Done</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="0b804f2b-ec09-46c2-91af-11746476f89f" name="AIR-Simulation-TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="6c90c73b-b23d-4f93-9496-3916a23a0bed" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Non Configured MSISDNs" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="Test Non Configured MSISDN with configured GetBalanceAndDate" id="9714667a-40de-4096-9850-64a13bbc9da1"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="6ba64aa7-698f-4348-b6e7-329e7ac4a721" name="Test Non Configured MSISDN with configured GetBalanceAndDate" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://${#Project#TEST_URL_AIR}</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<methodCall>
+   <methodName>GetBalanceAndDate</methodName>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>originNodeType</name>
+                  <value>
+                     <string>IVR</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originHostName</name>
+                  <value>
+                     <string>ivr001</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTransactionID</name>
+                  <value>
+                     <string>566612</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTimeStamp</name>
+                  <value>
+                     <dateTime.iso8601>20050422T14:15:21+0200</dateTime.iso8601>
+                  </value>
+               </member>
+               <member>
+                  <name>subscriberNumber</name>
+                  <value>
+                     <string>1006902446</string>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodCall>]]></con:request><con:assertion type="Valid HTTP Status Codes" id="c09a2c23-4ed8-4388-b87f-e2938d21ee12" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="40538d9a-85cc-4aff-b63c-4e4ecb851985" name="XPath Match"><con:configuration><path>//member/value[../name/text()='responseCode']/i4</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="httprequest" name="Test Non Configured MSISDN with non configured GetFafList" id="954df739-c400-484d-99b1-aafc7b4ab277"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="df2dab28-67e5-429c-a234-bf14ec9bcdb4" name="Test Non Configured MSISDN with non configured GetFafList" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://${#Project#TEST_URL_AIR}</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<methodCall>
+   <methodName>GetFaFList</methodName>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>originNodeType</name>
+                  <value>
+                     <string>IVR</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originHostName</name>
+                  <value>
+                     <string>ivr001</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTransactionID</name>
+                  <value>
+                     <string>566612</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTimeStamp</name>
+                  <value>
+                     <dateTime.iso8601>20050422T14:15:21+0200</dateTime.iso8601>
+                  </value>
+               </member>
+               <member>
+                  <name>subscriberNumber</name>
+                  <value>
+                     <string>1006902446</string>
+                  </value>
+               </member>
+               <member>
+                  <name>requestedOwner</name>
+                  <value>
+                     <int>1</int>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodCall>]]></con:request><con:assertion type="Valid HTTP Status Codes" id="b3f4c971-a79b-47e3-8cab-4145c70d4321" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="013ef61a-abf6-4f5a-81a6-3bc05b019198" name="XPath Match"><con:configuration><path>//member/value[../name/text()='responseCode']/i4</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="e8a3410e-e9e6-4c00-bba3-ca1c6b385b0d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Configured MSISDN with Sequence-1006902445" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="UpdateBalanceAndDate#1" id="0aac2e0e-ad7d-4121-affc-45d59e431add"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="6ba64aa7-698f-4348-b6e7-329e7ac4a721" name="UpdateBalanceAndDate#1" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://${#Project#TEST_URL_AIR}</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<methodCall>
+   <methodName>UpdateBalanceAndDate</methodName>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>originNodeType</name>
+                  <value>
+                     <string>IVR</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originHostName</name>
+                  <value>
+                     <string>ivr001</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTransactionID</name>
+                  <value>
+                     <string>566612</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTimeStamp</name>
+                  <value>
+                     <dateTime.iso8601>20050422T14:15:21+0200</dateTime.iso8601>
+                  </value>
+               </member>
+               <member>
+                  <name>subscriberNumber</name>
+                  <value>
+                     <string>1006902445</string>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodCall>]]></con:request><con:assertion type="Valid HTTP Status Codes" id="c09a2c23-4ed8-4388-b87f-e2938d21ee12" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="1dc95d92-434c-4e19-ac79-0ee53cebaaa3" name="XPath Match"><con:configuration><path>//member/value[../name/text()='responseCode']/i4</path><content>100</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>true</ignoreNamspaceDifferences><ignoreComments>true</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="httprequest" name="UpdateBalanceAndDate#2" id="a9344709-7ebc-4ac9-bc90-ab789fa0f429"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="6ba64aa7-698f-4348-b6e7-329e7ac4a721" name="UpdateBalanceAndDate#2" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://${#Project#TEST_URL_AIR}</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<methodCall>
+   <methodName>UpdateBalanceAndDate</methodName>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>originNodeType</name>
+                  <value>
+                     <string>IVR</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originHostName</name>
+                  <value>
+                     <string>ivr001</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTransactionID</name>
+                  <value>
+                     <string>566612</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTimeStamp</name>
+                  <value>
+                     <dateTime.iso8601>20050422T14:15:21+0200</dateTime.iso8601>
+                  </value>
+               </member>
+               <member>
+                  <name>subscriberNumber</name>
+                  <value>
+                     <string>1006902445</string>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodCall>]]></con:request><con:assertion type="Valid HTTP Status Codes" id="c09a2c23-4ed8-4388-b87f-e2938d21ee12" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="0b85c65a-d8a9-46b7-82fe-d68b0fbe2cf5" name="XPath Match"><con:configuration><path>//member/value[../name/text()='responseCode']/i4</path><content>200</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="httprequest" name="UpdateBalanceAndDate#3" id="372fed0b-a1df-408b-88ef-eb782702bdb0"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="6ba64aa7-698f-4348-b6e7-329e7ac4a721" name="UpdateBalanceAndDate#3" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://${#Project#TEST_URL_AIR}</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<methodCall>
+   <methodName>UpdateBalanceAndDate</methodName>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>originNodeType</name>
+                  <value>
+                     <string>IVR</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originHostName</name>
+                  <value>
+                     <string>ivr001</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTransactionID</name>
+                  <value>
+                     <string>566612</string>
+                  </value>
+               </member>
+               <member>
+                  <name>originTimeStamp</name>
+                  <value>
+                     <dateTime.iso8601>20050422T14:15:21+0200</dateTime.iso8601>
+                  </value>
+               </member>
+               <member>
+                  <name>subscriberNumber</name>
+                  <value>
+                     <string>1006902445</string>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodCall>]]></con:request><con:assertion type="Valid HTTP Status Codes" id="c09a2c23-4ed8-4388-b87f-e2938d21ee12" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="ad19fcc9-d8eb-4c0f-ab78-f5281b7f2bba" name="XPath Match"><con:configuration><path>//member/value[../name/text()='responseCode']/i4</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:restMockService id="ba3d0b8b-41a1-4317-b720-fed578b2e7c4" port="8080" path="/" host="localhost" name="AIR-Simulation-Mock" docroot=""><con:description/><con:settings/><con:startScript>log.info "start script"</con:startScript><con:stopScript>log.info "stop script"</con:stopScript><con:properties/><con:onRequestScript>log.info "start request script"</con:onRequestScript><con:afterRequestScript>log.info "after request script"</con:afterRequestScript><con:restMockAction name="/AIR" method="POST" resourcePath="/AIR" id="f5d93920-3bd1-496a-bf3a-ee68834daba0"><con:settings/><con:defaultResponse>AIRDefaultResponse</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>// Begin : Initialize &amp; Get data from request
+// TODO Fix the static part
+// context.theValue = mockRequest.getRequestXmlObject().selectPath("//Message/text()")[0];
+// Get AIR command name From Request
+//def airCommandName = "UpdateBalanceAndDate"
+def airCommandName = mockRequest.getRequestXmlObject().selectPath("//methodName/text()")[0].getStringValue()
+log.info "Recieved AIR Command : " + airCommandName
+// Get MSISDN From Request
+// def msisdn  = "1006902445"
+def msisdn  = mockRequest.getRequestXmlObject().selectPath("//member/value[../name/text()='subscriberNumber']/string")[0].getStringValue()
+log.info "Recieved Request for MSISDN : " + msisdn
+
+def currMSISDNSequence = null
+// End : Initialize &amp; Get data from request
+
+// Begin : Increment MSISDN Sequence
+// Initialize Hash table if not initialized
+if ( context.msisdnSequences == null ) {
+	context.msisdnSequences = new Hashtable&lt;String,Integer> ()
+}
+
+// Initialize MSISDN Sequence if not initialized.
+if ( context.msisdnSequences.get ( msisdn ) == null ) {
+	currMSISDNSequence = 1 
+} else {
+	currMSISDNSequence = context.msisdnSequences.get ( msisdn )
+	currMSISDNSequence++
+}
+
+context.msisdnSequences.put ( msisdn , currMSISDNSequence  )
+
+log.info "MSISDN " + msisdn + " with current sequence " + currMSISDNSequence
+// End : Increment MSISDN Sequence
+
+def selectedResponse = null ;
+
+// Begin : Select the proper response
+
+// Search with Command Name, MSISDN and current sequence
+def candidateResponses = mockOperation.mockResponses.findAll{ it.name.equals ( airCommandName + "-" + msisdn + "-" + currMSISDNSequence ) }
+
+// If not found, Search with Command Name and MSISDN
+if ( candidateResponses.size () == 0 ) {
+	candidateResponses = mockOperation.mockResponses.findAll{ it.name.equals ( airCommandName + "-" + msisdn ) }
+}
+
+// If not found, seach with Command name only
+if ( candidateResponses.size () == 0 ) {
+	candidateResponses = mockOperation.mockResponses.findAll{ it.name.equals ( airCommandName ) }
+}
+
+// If at last no response found, then return the default response.
+if ( candidateResponses.size () == 0 ) {
+	selectedResponse = "AIRDefaultResponse"
+} else {
+	// Get first response and return its name.
+	// It's assumed that response name can't repeat.
+	selectedResponse = candidateResponses[0].name
+}
+// End : Select the proper response
+
+return selectedResponse</con:dispatchPath><con:response name="GetBalanceAndDate" id="c07f5e2b-10d3-44ae-a78a-c63e86cfefff" httpResponseStatus="200"><con:settings/><con:responseContent><![CDATA[<methodResponse>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>responseCode</name>
+                  <value>
+                     <i4>0</i4>
+                  </value>
+               </member>
+               <member>
+                  <name>languageIDCurrent</name>
+                  <value>
+                     <i4>3</i4>
+                  </value>
+               </member>
+               <member>
+                  <name>AccumulatorInformation</name>
+                  <value>
+                     <array>
+                        <data>
+                           <value>
+                              <struct>
+                                 <member>
+                                    <name>accumulatorID</name>
+                                    <value>
+                                       <i4>2</i4>
+                                    </value>
+                                 </member>
+                                 <member>
+                                    <name>accumulatorValue</name>
+                                    <value>
+                                       <i4>3</i4>
+                                    </value>
+                                 </member>
+                              </struct>
+                           </value>
+                        </data>
+                     </array>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodResponse>]]></con:responseContent></con:response><con:response name="UpdateBalanceAndDate" id="7dbc7c67-fbb2-4122-8158-73c78cfa9998" httpResponseStatus="200"><con:settings/><con:responseContent><![CDATA[<methodResponse>
+   <fault>
+      <value>
+         <struct>
+            <member>
+               <name>faultCode</name>
+               <value>
+                  <int>1001</int>
+               </value>
+            </member>
+            <member>
+               <name>faultString</name>
+               <value>
+                  <string>Mandatory field missing.</string>
+               </value>
+            </member>
+         </struct>
+      </value>
+   </fault>
+</methodResponse>]]></con:responseContent></con:response><con:response name="GetAccountDetails" id="d9a625d3-82ad-4c41-acb9-08e67d1d2742" httpResponseStatus="200"><con:settings/><con:responseContent><![CDATA[<methodResponse>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>responseCode</name>
+                  <value>
+                     <i4>0</i4>
+                  </value>
+               </member>
+               <member>
+                  <name>languageIDCurrent</name>
+                  <value>
+                     <i4>3</i4>
+                  </value>
+               </member>
+               <member>
+                  <name>AccumulatorInformation</name>
+                  <value>
+                     <array>
+                        <data>
+                           <value>
+                              <struct>
+                                 <member>
+                                    <name>accumulatorID</name>
+                                    <value>
+                                       <i4>2</i4>
+                                    </value>
+                                 </member>
+                                 <member>
+                                    <name>accumulatorValue</name>
+                                    <value>
+                                       <i4>3</i4>
+                                    </value>
+                                 </member>
+                              </struct>
+                           </value>
+                        </data>
+                     </array>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodResponse>]]></con:responseContent></con:response><con:response name="UpdateBalanceAndDate-1006902445" id="ab0fba6d-a9a9-4564-94bc-362a6f77fa4e" httpResponseStatus="200"><con:settings/><con:responseContent><![CDATA[<methodResponse>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>responseCode</name>
+                  <value>
+                     <i4>0</i4>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodResponse>]]></con:responseContent></con:response><con:response name="UpdateBalanceAndDate-1006902445-1" id="51365a89-ffc7-449e-ae96-9f181d3e43cb" httpResponseStatus="200"><con:settings/><con:responseContent><![CDATA[<methodResponse>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>responseCode</name>
+                  <value>
+                     <i4>100</i4>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodResponse>]]></con:responseContent></con:response><con:response name="UpdateBalanceAndDate-1006902445-2" id="02019f38-03ef-4d5c-89cb-99a74330ee14" httpResponseStatus="200"><con:settings/><con:responseContent><![CDATA[<methodResponse>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>responseCode</name>
+                  <value>
+                     <i4>200</i4>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodResponse>]]></con:responseContent></con:response><con:response name="AIRDefaultResponse" id="b3238985-e4da-4432-8f2d-cd186b095cc0" httpResponseStatus="200"><con:settings/><con:responseContent><![CDATA[<methodResponse>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>responseCode</name>
+                  <value>
+                     <i4>0</i4>
+                  </value>
+               </member>
+               <member>
+                  <name>languageIDCurrent</name>
+                  <value>
+                     <i4>3</i4>
+                  </value>
+               </member>
+               <member>
+                  <name>AccumulatorInformation</name>
+                  <value>
+                     <array>
+                        <data>
+                           <value>
+                              <struct>
+                                 <member>
+                                    <name>accumulatorID</name>
+                                    <value>
+                                       <i4>2</i4>
+                                    </value>
+                                 </member>
+                                 <member>
+                                    <name>accumulatorValue</name>
+                                    <value>
+                                       <i4>3</i4>
+                                    </value>
+                                 </member>
+                              </struct>
+                           </value>
+                        </data>
+                     </array>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodResponse>]]></con:responseContent></con:response></con:restMockAction><con:restMockAction name="clear" method="GET" resourcePath="/clear" id="6b35f61b-c0a2-4ee1-96bb-624c86479ed2"><con:settings/><con:defaultResponse>Success-Clear</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>context.msisdnSequences = null</con:dispatchPath><con:response name="Success-Clear" id="b838cfa0-4b67-4308-a385-12779e6e8f6e" httpResponseStatus="200"><con:settings/><con:responseContent>Done</con:responseContent></con:response></con:restMockAction></con:restMockService><con:properties><con:property><con:name>TEST_URL_AIR</con:name><con:value>localhost:8080/AIR</con:value></con:property><con:property><con:name>TEST_URL_AIR_SIM_CLEAR</con:name><con:value>localhost:8080/clear</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
